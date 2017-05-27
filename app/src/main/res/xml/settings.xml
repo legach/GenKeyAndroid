@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="password_symbols"
+        android:title="Used symbols"
+        android:summary="It set symbols for the generation of passwords"
+        android:defaultValue="1"
+        android:entries="@array/password_symbols"
+        android:entryValues="@array/password_symbols"
+        android:dialogTitle="Choose symbols" />
+
+    <EditTextPreference
+        android:key="password_size"
+        android:title="Password length"
+        android:summary="It set length of new passwords"
+        android:defaultValue="8"
+        android:inputType="number"
+        android:numeric="signed"
+        android:dialogTitle="Input length (0 - 16)" />
+</PreferenceScreen>

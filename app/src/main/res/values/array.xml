@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="password_symbols">
+        <item>AbC and 123</item>
+        <item>abc and 123</item>
+        <item>only 123</item>
+        <item>only ABC</item>
+        <item>only abc</item>
+    </string-array>
+</resources>
