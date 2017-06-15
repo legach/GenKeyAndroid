@@ -385,14 +385,14 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     }
 
-    public void save(String FileName, String text, int PublicKey, Context Activity)//Save
+    public static void saveMain(String FileName, String text, int PublicKey, Context Activity)//Save
     {
         int newN = 0;
         BufferedReader br;
         try {
             // открываем поток для чтения
             br = new BufferedReader(new InputStreamReader(
-                    openFileInput(FileName)));
+                    Activity.openFileInput(FileName)));
             //String str = "";
             // читаем содержимое
             //while ((str = br.readLine()) != null) {
@@ -417,7 +417,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         try {
             // отрываем поток для записи
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(
-                    openFileOutput(FileName, MODE_APPEND)));
+                    Activity.openFileOutput(FileName, MODE_APPEND)));
             // пишем данные
             bw.write(appendText);
             bw.newLine();
@@ -435,7 +435,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
     }
 
-    public ArrayList<String> read(String FileName, int PrivatKey, Context Activity)
+    public static ArrayList<String> readMain(String FileName, int PrivatKey, Context Activity)
     {
         ArrayList<String> items = new ArrayList<String>();
         // This text is added only once to the file.
@@ -446,7 +446,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         try {
             // открываем поток для чтения
             BufferedReader br = new BufferedReader(new InputStreamReader(
-                    openFileInput(FileName)));
+                    Activity.openFileInput(FileName)));
 
             // читаем содержимое
             // {
@@ -532,7 +532,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
 
     //===============First_fragment=================//
-    public  class FirstFragment extends Fragment implements OnClickListener{
+    public static class FirstFragment extends Fragment implements OnClickListener{
             private static final String ARG_SECTION_NUMBER = "section_number";
             //FirstFragment fragment = new FirstFragment();
             Bundle args = new Bundle();
@@ -614,7 +614,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
             //engine e = new engine();
             //e.
-            save(standartFileName, preEncodeText, publickey, getActivity());
+            saveMain(standartFileName, preEncodeText, publickey, getActivity());
         }
 
         //Обновить пароль
@@ -640,7 +640,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
     }
 
     //===============Second_fragment=================//
-    public  class SecondFragment extends Fragment implements OnClickListener{
+    public static class SecondFragment extends Fragment implements OnClickListener{
         private static final String ARG_SECTION_NUMBER = "section_number";
         //SecondFragment fragment = new SecondFragment();
         Bundle args = new Bundle();
@@ -682,9 +682,6 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
         }
 
         //Обрабатываем щелчки на элементах ListView:
-
-
-
         public void onClick(View v) {
 
             switch (v.getId()) {
@@ -709,7 +706,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
             //engine e = new engine();
             //readpass = e.read(standartFileName,privatkey,getActivity());
             readpass.clear();
-            readpass=read(standartFileName,privatkey,getActivity());
+            readpass=readMain(standartFileName,privatkey,getActivity());
 
             newAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, readpass);
             newAdapter.notifyDataSetChanged();
